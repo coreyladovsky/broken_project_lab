@@ -20,7 +20,7 @@ const getAllCars = async (req, res, next) => {
 
 const getSingleCar = async (req, res, next) => {
   try {
-    let car = db.one("SELECT * FROM cars WHERE id=$1", [req.params.id]);
+    let car = await db.one("SELECT * FROM cars WHERE id=$1", [req.params.id]);
     res.json({
       status: "success",
       car,
@@ -34,7 +34,7 @@ const getSingleCar = async (req, res, next) => {
 const createCar = async (req, res, next) => {
   try {
     await db.none(
-      "INSERT INTO cars (brand, year) VALUES(${brand}, ${year})",
+      "INSERT INTO cars (brand, model, year, owner_id) VALUES(${brand}, ${model}, ${year}, ${owner_id} )",
       req.body
     );
     res.json({
@@ -99,6 +99,7 @@ const updateCarFeature = async (req, res, next) => {
     if (req.body.year && req.body.year.toLowerCase() === "null") {
       req.body.year = null;
     }
+
     db.none(
       "UPDATE cars SET " + queryString + " WHERE id=" + req.params.id,
       req.body
@@ -106,7 +107,7 @@ const updateCarFeature = async (req, res, next) => {
 
     res.json({
       status: "success",
-      message: "You Updated a PET!"
+      message: "You Updated a CAR!"
     });
   } catch (err) {
     next(err);
