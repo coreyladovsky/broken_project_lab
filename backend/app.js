@@ -7,7 +7,7 @@ const carsRouter = require('./queries/cars/cars');
 const usersRouter = require('./routes/users/users');
 
 
-app.use('/cars', carsRouter);
+app.use('/cars', usersRouter);
 app.use('/users', usersRouter)
 app.use(cors);
 
