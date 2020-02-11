@@ -1,8 +1,18 @@
-const carsRouter = require('express').Router();
-const { getAllCars, createCar } = require("../../queries/cars/cars");
+const carsRouter = require("express").Router();
+const {
+  getAllCars,
+  getSingleCar,
+  createCar,
+  deleteCar,
+  updateCar,
+  updateCarFeature
+} = require("../../queries/cars/cars");
 
-carsRouter.get("/", getAllCars)
+carsRouter.get("/", getAllCars);
+carsRouter.get("/:id", getSingleCar);
+carsRouter.post("/", createCar);
+carsRouter.delete("/:id", deleteCar);
+carsRouter.put("/:id", updateCar);
+carsRouter.patch("/:id", updateCarFeature);
 
-carsRouter.post("/", createCar)
-
-module.exports = carsRouter; 
+module.exports = carsRouter;
