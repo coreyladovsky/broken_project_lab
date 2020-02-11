@@ -30,7 +30,7 @@ const fillSelectBar =  (data, domEl) => {
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentloaded', () => {
     let allCars = document.querySelector(".allCars");
     let select = document.querySelector("select");
     let carsForOneUser = document.querySelector("#carsForOneUser");
