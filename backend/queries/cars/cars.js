@@ -6,7 +6,7 @@ const getAllCars = async (req, res, next) => {
     res.json({
       status: "success",
       message: "all cars",
-      payload: cars
+      cars
     });
   } catch (err) {
     // next(err);
