@@ -20,7 +20,7 @@ const getAllCars = async (req, res, next) => {
 
 const getSingleCar = async (req, res, next) => {
   try {
-    let car = await db.one("SELECT * FROM users WHERE id=$1", [req.params.id]);
+    let car = await db.one("SELECT * FROM cars WHERE id=$1", [req.params.id]);
     res.json({
       status: "success",
       payload: car,
@@ -33,10 +33,7 @@ const getSingleCar = async (req, res, next) => {
 
 const createCar = async (req, res, next) => {
   try {
-    await db.none(
-      "INSERT INTO cars (brand, model, year, owner_id) VALUES(${brand}, ${year}, ${model}, ${owner_id} )",
-      req.body
-    );
+    await db.none("INSERT INTO cars (brand, model, year, owner_id) VALUES(${brand}, ${model},${year}, ${owner_id} )", req.body );
     res.json({
       status: "succss",
       message: "New car added"
