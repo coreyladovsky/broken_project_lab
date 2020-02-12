@@ -1,13 +1,13 @@
-/c broken_project
 
 
-DROP TABLE IF EXISTS cars; 
 
 DROP DATABASE IF EXISTS broken_project;
 CREATE DATABASE broken_project; 
+\c broken_project;
 
 
 
+DROP TABLE IF EXISTS cars; 
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE cars (
