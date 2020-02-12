@@ -2,9 +2,12 @@ document.addEventListener('DOMContentloaded', () => {
     let allCars = document.querySelector(".allCars");
     let select = document.querySelector("select");
     let carsForOneUser = document.querySelector("#carsForOneUser");
-    select.addEventListener("change", (e) => {
+      
+    fetchData("http:/localhost:3000/cars", fillUlWithCars, allCars)
+    fetchData("http://localhost:3000/users", fillselectBar, select);
+    select.addEventListener("change", async (e) => {
         e.preventDefault()
-        fetchData(`http://localhost:3000/users/${e.target.id}/cars`, fillUlWithCars, carsForOneUser)
+        let res = await axios.get(`http://localhost:3000/users/${e.target.id}/cars`, fillUlWithCars, carsForOneUser)
         
     })
         
@@ -37,7 +40,5 @@ const fillSelectBar =  (data, domEl) => {
     })
 }
 
-    
-    fetchData("http:/localhost:3000/cars", fillUlWithCars, allCars)
-    fetchData("http://localhost:3000/users", fillselectBar, select);
+  
 })
