@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS cars;
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY, 
-    username TEXT NOT NULL UNIQUE
+    username TEXT UNIQUE
 );
 
 CREATE TABLE cars (

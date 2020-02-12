@@ -41,11 +41,10 @@ const deleteUser = async (req, res, next) => {
 
 const createUser = async (req, res, next) => {
   try {
-    const user = await db.none("INSERT INTO users (username) VALUES(${username})" ,req.body);
+    const user = await db.none("INSERT INTO users (username) VALUES (${username})" ,req.body);
     res.json({
       status: "success",
-      message: "New user added",
-      user
+      message: "New user added"
     });
   } catch (err) {
     next(err);
