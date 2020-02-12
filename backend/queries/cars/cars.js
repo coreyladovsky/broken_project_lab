@@ -62,14 +62,14 @@ const deleteCar = async(req, res, next) => {
 
 const updateCar = async (req, res, next) => {
   try {
-    let car = await db.one(
-      "UPDATE cars SET brand=${brand}, model=${model}, year=${year}, owner_id=${owner_id} RETURNING *",
+    let car = await db.one( "UPDATE cars SET brand=${brand}, model=${model}, year=${year}, owner_id=${owner_id} RETURNING *",
       {
-        owner_id: parseInt(req.body.owner_id),
+         id: parseInt(req.params.id),
         brand: req.body.brand,
-        year: parseInt(req.body.year),
         model: req.body.model,
-        id: parseInt(req.params.id)
+        year: parseInt(req.body.year),
+        owner_id: parseInt(req.body.owner_id),
+        payload: car
       }
     );
     res.json({
