@@ -62,7 +62,7 @@ const deleteCar = async(req, res, next) => {
 
 const updateCar = async (req, res, next) => {
   try {
-    let car = await db.one("UPDATE cars SET  brand = ${brand}, model = ${model}, year = ${year}, owner_id = ${owner_id} WHERE id=$1", req.params.id)
+    let car = await db.none("UPDATE cars SET brand = ${brand}, model = ${model}, year = ${year}, owner_id = ${owner_id} WHERE id=$1", req.params.id)
     res.json({
       status: "success",
       message: "updated one car",
