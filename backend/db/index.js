@@ -1,6 +1,6 @@
-const pgp = require("pg-promise")(());
+const pgp = require("pg-promise")({});
 
-const db = require("postgress://localhost:5432/grover_groomers");
+const db = pgp("postgress://localhost:5432/broken_project");
 
-module.exports = { db }; 
+module.exports = db  
 

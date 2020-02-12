@@ -1,32 +1,30 @@
-/c broken_project
-
-
-DROP TABLE IF EXISTS cars; 
-
 DROP DATABASE IF EXISTS broken_project;
 CREATE DATABASE broken_project; 
+\c broken_project;
 
 
 
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS cars; 
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY, 
+    username TEXT UNIQUE
+);
 
 CREATE TABLE cars (
     id SERIAL PRIMARY KEY, 
     brand TEXT, 
     model TEXT,
     year INTEGER,
-    owner_id INT REFERENCES users(id) ON DELETE SET NUL
-)
-
-CREATE TABLE users (
-    id SERIAL PRIMARY KEY, 
-    username TEXT NOT NULL UNIQUE
-)
+    owner_id INT REFERENCES users(id) ON DELETE SET NULL
+);
 
 
 
 
-INSERT INTO user (username) 
+
+INSERT INTO users (username) 
 VALUES 
 ('Corey'),
 ('Jon'), 

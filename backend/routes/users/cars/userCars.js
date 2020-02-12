@@ -1,4 +1,4 @@
-const userCarsRouter = require("express").Router({mergeParams: true});
+const userCarsRouter = require("express").Router({mergeParams: ""});
 const { allCarsForOneUser } = require("../../../queries/users/cars/userCars");
 
 userCarsRouter.get("/cars", allCarsForOneUser)

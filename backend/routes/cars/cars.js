@@ -1,17 +1,11 @@
 const carsRouter = require("express").Router();
-const {
-  getAllCars,
-  getSingleCar,
-  createCar,
-  deleteCar,
-  updateCarFeature
-} = require("../../queries/cars/cars");
+const { getAllCars, getSingleCar, createCar, deleteCar, updateCar, updateCarFeature } = require("../../queries/cars/cars");
 
-carsRouter.get("/cars/", getAllCars);
-carsRouter.get("/cars/id", getSingleCar);
-carsRouter.post("/cars/", createCar);
-carsRouter.delete("/cars/:id", deleteCar);
-carsRouter.put("/cars/:id", updateCar);
-carsRouter.patch("/cars/:id", updateCarFeature);
+carsRouter.get("/", getAllCars);
+carsRouter.get("/:id", getSingleCar);
+carsRouter.post("/", createCar);
+carsRouter.delete("/:id", deleteCar);
+carsRouter.put("/:id", updateCar);
+carsRouter.patch("/:id", updateCarFeature);
 
 module.exports = carsRouter;
