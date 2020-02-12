@@ -20,10 +20,10 @@ const getAllCars = async (req, res, next) => {
 
 const getSingleCar = async (req, res, next) => {
   try {
-    let car = await db.one("SELECT * FROM users WHERE id=$1", [req.params.car]);
+    let car = await db.one("SELECT * FROM users WHERE id=$1", [req.params.id]);
     res.json({
       status: "success",
-      car,
+      payload: car,
       message: "Received ONE CAR!"
     });
   } catch (err) {
